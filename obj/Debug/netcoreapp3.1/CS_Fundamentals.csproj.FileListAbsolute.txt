@@ -1,0 +1,4 @@
+C:\Users\srosso\CS_Fundamentals\CS_Fundamentals\obj\Debug\netcoreapp3.1\CS_Fundamentals.csprojAssemblyReference.cache
+C:\Users\srosso\CS_Fundamentals\CS_Fundamentals\obj\Debug\netcoreapp3.1\CS_Fundamentals.AssemblyInfoInputs.cache
+C:\Users\srosso\CS_Fundamentals\CS_Fundamentals\obj\Debug\netcoreapp3.1\CS_Fundamentals.AssemblyInfo.cs
+C:\Users\srosso\CS_Fundamentals\CS_Fundamentals\obj\Debug\netcoreapp3.1\CS_Fundamentals.csproj.CoreCompileInputs.cache
