@@ -11,20 +11,19 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Collections;
  
-namespace BinarySearchTree
+namespace bst
 {
 
-public class BinarySearchTree<Key>{
+public class BST<Key, Value> where Key : IComparable<Key>{
 
-    private Node root;
+    private Node root { get; set; }
     class Node
     {
-        private Key key;
-        private Value val;
-        private Node left;
-        private Node right;
-        private int count;
-
+        public Node left;
+        public Node right;
+        public Key key { get; set; }
+        public Value val { get; set; }
+        public int count;
         public Node(Key key, Value val){
             this.key = key;
             this.val = val;
@@ -37,12 +36,29 @@ public class BinarySearchTree<Key>{
         return x.count;
     }
     
+    // public Value get(Key key){
+    //     Node x = root;
+    //     while (x != null){
+    //         int cmp = key.CompareTo(x.key);
+    //         if(cmp < 0){x = x.left;}
+    //         else if (cmp > 0){x = x.right;}
+    //         else if (cmp == 0){return x.val;}
+    //     }
+    //     return null;
+    // }
+
     public void put(Key key, Value val){
         root = put(root, key, val);
     }
     private Node put(Node x, Key key, Value val){
-        if(x==null){return new Node(key, val);}
-        int cmp = key.compareTo(x.key);
+        if(x==null){
+            Node root = new Node(key, val);
+            // root.val = val;
+            // root.key = key;
+            return root;
+            
+            }
+        int cmp = key.CompareTo(x.key);
         if (cmp < 0){
             x.left = put(x.left, key, val);
         }
@@ -55,16 +71,7 @@ public class BinarySearchTree<Key>{
         return x;
     }
 
-    public Value get(Key key){
-        Node x = root;
-        while (x != null){
-            int cmp = key.compareTo(x.key);
-            if(cmp < 0){x = x.left;}
-            else if (cmp > 0){x = x.right;}
-            else if (cmp == 0){return x.val;}
-        }
-        return null;
-    }
+    
 
     // Delete Min
     public void deleteMin(){root = deleteMin(root);}
@@ -81,7 +88,7 @@ public class BinarySearchTree<Key>{
     }
     private Node delete(Node x, Key key){
         if (x==null){return null;}
-        int cmp = key.compareTo(x.key);
+        int cmp = key.CompareTo(x.key);
         if (cmp<0){x.left = delete(x.left, key);}
         else if(cmp>0){x.right = delete(x.right, key);}
         else {
@@ -99,27 +106,30 @@ public class BinarySearchTree<Key>{
     }
     static void Main()
     {
-        BinarySearchTree binarySearchTree = new BinarySearchTree();
+        BST bst = new BST(0,0);
  
-        binarySearchTree.put(1);
-        binarySearchTree.put(2);
-        binarySearchTree.put(7);
-        binarySearchTree.put(3);
-        binarySearchTree.put(10);
-        binarySearchTree.put(5);
-        binarySearchTree.put(8);
+        bst.put(1);
+        bst.put(2);
+        bst.put(7);
+        bst.put(3);
+        bst.put(10);
+        bst.put(5);
+        bst.put(8);
         Console.WriteLine();
         
-        Node node = binarySearchTree.get(5);
+        Node node = bst.get(5);
         Console.WriteLine(node);
         
         Console.WriteLine("Delete:");
-        binarySearchTree.Remove(7);
+        bst.delete(7);
         Console.WriteLine();
-        binarySearchTree.Remove(8);
+        bst.delete(8);
         Console.WriteLine();
         
         Console.ReadLine();
     }
-}
+
+    }
+    
+
 }
