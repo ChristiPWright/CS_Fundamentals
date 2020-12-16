@@ -1,6 +1,5 @@
-public class MergeSort
-{
-  public static int[] SortNumbers(int[] nums){
+public class Solution {
+    public int[] SortArray(int[] nums) {
         int[] left;
         int[] right;
         int[] result = new int[nums.Length];
@@ -31,13 +30,13 @@ public class MergeSort
             x++;
         }
         //recursively sort the lieft array
-        left = SortNumbers(left);
-        right = SortNumbers(right);
+        left = SortArray(left);
+        right = SortArray(right);
         result = merge(left, right);
         Console.WriteLine(result);
         return result;
     }
-  public static int[] merge(int[] left, int[] right){
+    public static int[] merge(int[] left, int[] right){
         int resultLength = right.Length + left.Length;
         int [] result = new int[resultLength];
 
@@ -71,6 +70,7 @@ public class MergeSort
         }
         return result;
     }
-  
 }
+
+// Tested Successfully on https://leetcode.com/problems/sort-an-array/ 12/15
 
