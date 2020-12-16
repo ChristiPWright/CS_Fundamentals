@@ -1,5 +1,6 @@
 // Stats: 
 // Guarantee: Search(N), Insert(N), Delete(n)
+//Worst-Case: Search(N), Insert(N), Delete(n) 
 // Average  : SearchHit(1.39 lg N), Insert(1.39 lg N), Delete(square root of N)
 // Ordered Iteration? Yes
 
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Collections;
  
-namespace bst
+namespace BinarySearchTree
 {
 
 public class BST<Key, Value> where Key : IComparable<Key>{
@@ -104,6 +105,21 @@ public class BST<Key, Value> where Key : IComparable<Key>{
         x.count = size(x.left) + size(x.right) + 1;
         return x;
     }
+
+    //Inorder Traversal
+    public Iterable<Key> keys(){
+        Queue<Key> q = new Queue<Key>();
+       inorder(root, q);
+       return q;
+    }
+    private void inorder(Node x, Queue<Key> q){
+        if (x ==null){ return; }
+        inorder(x.left, q);
+        q.Enqueue(x.key);
+        inorder(x.right, q)
+
+    }
+
     static void Main()
     {
         BST bst = new BST(0,0);
